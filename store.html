@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <label>Product:</label><input type="text" id="product">
+    <label>Price:</label><input type="text" id="price">
+    <label>Quantity:</label><input type="text" id="qty">
+    <label>Store:</label><input type="text" id="store">
+    <br>
+    <button onclick="add()">Add Product</button><br><br>
+    <br>
+    <div id="msg1"></div><br><br>
+    <div id="disp1"></div><br><br>
+    <div id="msg2"></div><br><br>
+    <div id="disp2"></div><br><br>
+    
+</body>
+<script>
+    var ele1=document.getElementById("product");
+    var ele2=document.getElementById("price");
+    var ele3=document.getElementById("qty");
+    var ele4=document.getElementById("store");
+    var array1=[];
+    var array2=[];
+    var narray1=[];
+    var narray2=[];
+    var val1,val2=0,val3=0,val4=0,str="",k=0,str2="";
+    function add()
+    {
+       var store= validation();
+       var json={product:ele1.value,price:ele2.value,quantity:ele3.value,store:ele4.value};
+       
+
+        if(ele4.value=="A")
+        {
+            array1.push(json);
+            display1();
+            display2();
+            ele1.value="";
+            ele2.value="";
+            ele3.value="";
+            ele4.value="";
+        }
+        if(ele4.value=="B")
+        {
+            array2.push(json);
+            display2();
+            display1();
+            ele1.value="";
+             ele2.value="";
+             ele3.value="";
+            ele4.value="";
+        }
+      
+    }
+    function display2()
+    {str2=""
+        var h1="<div class='header'>Name</div>";
+        var h2="<div class='header'>Price</div>";
+        var h3="<div class='header'>Quantity</div>";
+        var h4="<div class='header'>&nbsp</div>";
+        var row="<div>"+h1+h2+h3+h4+"</div>";
+        str2=str2+row;
+        var narray2=array2.filter(show2)
+        k=0;
+        function show2(pr)
+        {console.log(pr.id)
+        
+           var p1= "<div class=cell2>"+pr.product+"</div>"
+           var p2= "<div class=cell2>"+pr.price+"</div>"
+           var p3= "<div class=cell2>"+pr.quantity+"</div>"
+           var p4= "<div class=cell2><button onclick=clicked2("+k+")>Sell</button></div>"
+           var row="<div>"+p1+p2+p3+p4+"</div>"
+           str2=str2+row;
+           k++;
+        }
+        var msg2=document.getElementById("msg2");
+        msg2.innerHTML="Store B";
+        var table2=document.getElementById("disp2");
+        table2.innerHTML=str2;
+    }
+    function clicked1(index)
+    {
+      array1[index].quantity--;
+      if(array1[index].quantity==0)
+      {
+          array1.splice(index,1);
+      }
+      display1();
+    }
+
+    function clicked2(index)
+    {
+      array2[index].quantity--;
+      if(array2[index].quantity==0)
+      {
+          array2.splice(index,1);
+      }
+      display2();
+    }
+    function display1()
+    {str=""
+        var h1="<div class='header'>Name</div>";
+        var h2="<div class='header'>Price</div>";
+        var h3="<div class='header'>Quantity</div>";
+        var h4="<div class='header'>&nbsp</div>";
+        var row="<div>"+h1+h2+h3+h4+"</div>";
+        str=str+row;
+        var narray1=array1.filter(show1)
+        k=0;
+        function show1(pr)
+        {console.log(pr.id)
+        
+           var p1= "<div class=cell2>"+pr.product+"</div>"
+           var p2= "<div class=cell2>"+pr.price+"</div>"
+           var p3= "<div class=cell2>"+pr.quantity+"</div>"
+           var p4= "<div class=cell2><button onclick=clicked1("+k+")>Sell</button></div>"
+           var row="<div>"+p1+p2+p3+p4+"</div>"
+           str=str+row;
+           k++;
+        }
+        var msg1=document.getElementById("msg1");
+        msg1.innerHTML="Store A";
+        var table1=document.getElementById("disp1");
+        table1.innerHTML=str;
+    }
+    function validation()
+    {
+    val1=ele1.value.length;
+    val2=+ele2.value;
+    val3=+ele3.value;
+    val4=ele4.value;
+    
+       
+        if(val1<5)
+        {
+            alert("Name should be minimum 5 characters");
+        }
+        else if(val2==0)
+        {
+            alert("Price should be greater than 0.");
+        }
+        else if(val3==0)
+        {
+            alert("Quantity should be greater than 0.");
+        }
+        else if(val4!='A'&&val4!='B')
+        {
+            alert("The store entered should be A or B");
+        
+        }
+        else
+        {
+            return val4;
+        }
+    }
+</script>
+</html>

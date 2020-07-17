@@ -1,0 +1,41 @@
+.header
+{
+    display: inline-block;
+    width:15%;
+    text-align: center;
+    background-color: black;
+    color: white;
+    margin: 1px;
+}
+.cell
+{
+    display: inline-block;
+    width:15%;
+    text-align: center;
+    background-color: gainsboro;
+    margin: 1px;
+}
+.cell
+{
+    display: inline-block;
+    width:15%;
+    text-align: center;
+    background-color: pink;
+    margin: 1px;
+}
+.cell2
+{
+    display: inline-block;
+    width:15%;
+    text-align: center;
+    background-color: #d3d3d3;
+    margin: 1px;
+}
+.cell3
+{
+    display: inline-block;
+    width:15%;
+    text-align: center;
+    background-color: #67f990;
+    margin: 1px;
+}
