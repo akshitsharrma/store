@@ -30,6 +30,10 @@
     function add()
     {
        var store= validation();
+       if(store==undefined)
+       {}
+       else
+       {
        var json={product:ele1.value,price:ele2.value,quantity:ele3.value,store:ele4.value};
        
 
@@ -52,7 +56,7 @@
              ele2.value="";
              ele3.value="";
             ele4.value="";
-        }
+        }}
       
     }
     function display2()
@@ -132,8 +136,7 @@
     val2=+ele2.value;
     val3=+ele3.value;
     val4=ele4.value;
-    
-       
+    console.log(val1);
         if(val1<5)
         {
             alert("Name should be minimum 5 characters");
